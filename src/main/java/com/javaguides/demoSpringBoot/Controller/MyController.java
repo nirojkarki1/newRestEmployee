@@ -1,46 +1,46 @@
 package com.javaguides.demoSpringBoot.Controller;
 
 
-import com.javaguides.demoSpringBoot.Entity.Student;
-import com.javaguides.demoSpringBoot.Service.StudentService;
+import com.javaguides.demoSpringBoot.Entity.Employee;
+import com.javaguides.demoSpringBoot.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @RestController //Controls the Rest Application.
 public class MyController {
-    @Autowired
-    private StudentService studentService;
 
-    @GetMapping("/")
-    public String home(){
+     @Autowired
+     private EmployeeService employeeService;
 
-        return "<HTML><H1> Welcome to First Boot Application</H1></HTML>";
-    }
-    @GetMapping("/students")
-    public List<Student> getStudents(){
-      return this.studentService.getAllStudents();
-    }
+     @GetMapping
+     public String home(){
+         return "<HTML><H1> Welcome to First Boot Application</H1></HTML>";
+     }
 
-    @GetMapping("/students/{studentID}")
-    public Student getStudent(@PathVariable String studentID){
-       return this.studentService.getStudentByID(Integer.parseInt(studentID));
-    }
+     @GetMapping("/employees")
+     public List<Employee> getEmployees(){
+         return this.employeeService.getAllEmployee();
+     }
+     @GetMapping("/employees/{employeeID}")
+     public Employee getEmployee(@PathVariable String employeeID){
+         return this.employeeService.getEmployeeByID(Integer.parseInt(employeeID));
+     }
 
-    @PostMapping("/students")
-    public Student addStudent(@RequestBody Student student){
-        return this.studentService.addStudent(student);
-    }
+     @PostMapping("/employees")
+     public Employee addEmployee(@RequestBody Employee employee){
+         return this.employeeService.addEmployee(employee);
+     }
 
-    @PutMapping("/students")
-    public Student updateStudent(@RequestBody Student student){
-        return this.studentService.updateStudent(student);
-    }
-
-    @DeleteMapping("/students/{studentID}")
-    public String deleteStudent(@PathVariable String studentID){
-        return this.studentService.deleteStudentById(Integer.parseInt(studentID));
-    }
+     @PutMapping("/employees")
+     public Employee updateEmployee(@RequestBody Employee employee){
+         return this.employeeService.updateEmployee(employee);
+     }
+     @DeleteMapping("/employee/{employeeID}")
+     public String deleteEmployee(@PathVariable String employeeID){
+         return this.employeeService.deleteEmployeeById(Integer.parseInt(employeeID));
+     }
 
 }
