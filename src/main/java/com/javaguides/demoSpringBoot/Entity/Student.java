@@ -13,14 +13,16 @@ public class Student {
 
     private String name;
     private String major;
+    private String email;
 
     public Student(){
 
     }
 
-    public Student(String name,String major) {
+    public Student(String name,String major,String email) {
         this.name = name;
         this.major = major;
+        this.email = email;
     }
 
     public String getName() {
@@ -37,5 +39,13 @@ public class Student {
 
     public void setMajor(String major) {
         this.major = major;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
